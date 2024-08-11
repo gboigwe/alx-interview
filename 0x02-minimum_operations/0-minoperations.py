@@ -18,3 +18,6 @@ def minOperations(n):
             n //= div
         div += 1
     return min_ope
+
+
+if __name__ == "__main__"
