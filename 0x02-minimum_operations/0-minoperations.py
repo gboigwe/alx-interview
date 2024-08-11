@@ -12,9 +12,15 @@ def minOperations(n):
 
     min_ope = 0
     div = 2
+
     while n > 1:
         while n % div == 0:
             min_ope += div
             n //= div
         div += 1
     return min_ope
+
+
+if __name__ == "__main__":
+    # test code here
+    pass
