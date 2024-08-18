@@ -1,13 +1,10 @@
 #!/usr/bin/python3
 """
-Parsing a log and printing stats to stdout
-All done by Module
+Module that parses a log and prints stats to stdout
 """
-
-
 from sys import stdin
 
-d_status_code = {
+status_codes = {
     "200": 0,
     "301": 0,
     "400": 0,
@@ -22,11 +19,11 @@ size = 0
 
 
 def print_stats():
-    """Accumulated logs is being printed"""
+    """Prints the accumulated logs"""
     print("File size: {}".format(size))
-    for status in sorted(d_status_code.keys()):
-        if d_status_code[status]:
-            print("{}: {}".format(status, d_status_code[status]))
+    for status in sorted(status_codes.keys()):
+        if status_codes[status]:
+            print("{}: {}".format(status, status_codes[status]))
 
 
 if __name__ == "__main__":
@@ -36,8 +33,8 @@ if __name__ == "__main__":
             try:
                 items = line.split()
                 size += int(items[-1])
-                if items[-2] in d_status_code:
-                    d_status_code[items[-2]] += 1
+                if items[-2] in status_codes:
+                    status_codes[items[-2]] += 1
             except:
                 pass
             if count == 9:
